@@ -28,11 +28,16 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 // ADMIN ROUTES
 Route::get('/admin/login', [DashboardController::class, 'showLoginForm'])->name('admin.login');
-Route::get('/admin/dashboard', [DashboardController::class, 'showDashboard'])->name('admin.dashboard');
-Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts.index');
-Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
-Route::post('/admin/posts/{id}/edit', [PostController::class, 'update'])->name('admin.posts.update');
-Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
+Route::post('/admin/login', [DashboardController::class, 'login'])->name('admin.login.submit');
+
+Route::middleware('auth')->group(function () {
+    Route::post('/admin/logout', [DashboardController::class, 'logout'])->name('admin.logout');
+    Route::get('/admin/dashboard', [DashboardController::class, 'showDashboard'])->name('admin.dashboard');
+    Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts.index');
+    Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
+    Route::post('/admin/posts/{id}/edit', [PostController::class, 'update'])->name('admin.posts.update');
+    Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
+});
 
 
 
