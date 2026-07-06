@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'showDashboard'])->name('admin.dashboard');
     Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts.index');
     Route::get('/admin/posts/create', [PostController::class, 'create'])->name('admin.posts.create');
+    Route::get('/admin/posts/{id}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
     Route::post('/admin/posts/{id}/edit', [PostController::class, 'update'])->name('admin.posts.update');
     Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
 });
