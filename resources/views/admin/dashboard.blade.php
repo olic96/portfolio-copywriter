@@ -18,6 +18,7 @@
 </div>
 
 <p>Benvenuto, {{ auth()->user()->name }}.</p>
+<a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Vai ai lavori</a>
 
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
