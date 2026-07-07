@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body class="p-4">
+    @include('partials.navbar')
     <div class="container">
         <h1>Il mio Portofolio</h1>
         @forelse ($posts as $post)
