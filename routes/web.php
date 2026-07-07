@@ -22,7 +22,7 @@ use App\Http\Controllers\Admin\PostController;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/bio', [BioController::class, 'index'])->name('bio');
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 Route::get('/portfolio/{id}', [PortfolioController::class, 'show'])->name('portfolio.show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 

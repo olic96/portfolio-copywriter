@@ -16,7 +16,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function edit($id)
+    public function edit(string $id)
     {
         return view('admin.posts.edit', [
             'post' => Post::findOrFail($id)
@@ -38,18 +38,18 @@ class PostController extends Controller
         ]);
 
         Post::create([
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
-            'genere' => $request->genere,
-            'excerpt' => $request->excerpt,
-            'content' => $request->content,
+            'title' => $request->input('title'),
+            'slug' => Str::slug($request->input('title')),
+            'genere' => $request->input('genere'),
+            'excerpt' => $request->input('excerpt'),
+            'content' => $request->input('content'),
             'published' => $request->boolean('published'),
         ]);
 
         return redirect()->route('admin.posts.index');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, string $id)
     {
         $request->validate([
             'title' => 'required|string|max:255',
@@ -60,18 +60,18 @@ class PostController extends Controller
 
         $post = Post::findOrFail($id);
         $post->update([
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
-            'genere' => $request->genere,
-            'excerpt' => $request->excerpt,
-            'content' => $request->content,
+            'title' => $request->input('title'),
+            'slug' => Str::slug($request->input('title')),
+            'genere' => $request->input('genere'),
+            'excerpt' => $request->input('excerpt'),
+            'content' => $request->input('content'),
             'published' => $request->boolean('published'),
         ]);
 
         return redirect()->route('admin.posts.index');
     }
 
-    public function destroy($id)
+    public function destroy(string $id)
     {
         $post = Post::findOrFail($id);
         $post->delete();
