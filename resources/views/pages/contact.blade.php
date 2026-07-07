@@ -13,8 +13,8 @@
         <h1>Contatti</h1>
         <p>Puoi scrivermi o chiamarmi qui:</p>
         <ul class="list-unstyled">
-            <li><strong>Email:</strong> <a href="mailto:tuaemail@esempio.com">tuaemail@esempio.com</a></li>
-            <li><strong>Telefono:</strong> <a href="tel:+390000000000">+39 000 000 0000</a></li>
+            <li><strong>Email:</strong> <a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></li>
+            <li><strong>Telefono:</strong> <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a></li>
         </ul>
     </div>
 

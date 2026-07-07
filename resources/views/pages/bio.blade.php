@@ -11,10 +11,7 @@
     @include('partials.navbar')
     <div class="container">
         <h1>Chi sono</h1>
-        <p>
-            Scrivi qui due o tre paragrafi su di te: percorso, esperienza,
-            cosa scrivi e perché.
-        </p>
+        <p>{{ $setting->bio }}</p>
     </div>
 
 <script src="{{ mix('js/app.js') }}"></script>

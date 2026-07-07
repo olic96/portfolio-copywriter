@@ -7,6 +7,7 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\SettingController;
 
 
 /*
@@ -31,6 +32,8 @@ Route::get('/admin/login', [DashboardController::class, 'showLoginForm'])->name(
 Route::post('/admin/login', [DashboardController::class, 'login'])->name('admin.login.submit');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/admin/settings', [SettingController::class, 'edit'])->name('admin.settings.edit');
+    Route::post('/admin/settings', [SettingController::class, 'update'])->name('admin.settings.update');
     Route::post('/admin/logout', [DashboardController::class, 'logout'])->name('admin.logout');
     Route::get('/admin/dashboard', [DashboardController::class, 'showDashboard'])->name('admin.dashboard');
     Route::get('/admin/posts', [PostController::class, 'index'])->name('admin.posts.index');
@@ -40,11 +43,3 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/posts/{id}/edit', [PostController::class, 'update'])->name('admin.posts.update');
     Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
 });
-
-
-
-
-
-
-
-

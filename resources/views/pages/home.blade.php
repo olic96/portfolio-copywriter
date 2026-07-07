@@ -13,13 +13,13 @@
 
     <!-- 1. Hero -->
     <div class="text-center my-5">
-        <h1>Il tuo Nome</h1>
-        <p class="lead">Scrittore e copywriter</p>
+        <h1>{{ $setting->hero_title }}</h1>
+        <p class="lead">{{ $setting->hero_subtitle }}</p>
     </div>
 
     <!-- 2. Bio teaser -->
     <div class="mb-5">
-        <p>Due o tre righe brevi su di te...</p>
+        <p>{{ Str::limit($setting->bio, 200) }}</p>
         <a href="{{ route('bio') }}">Scopri di più su di me &rarr;</a>
     </div>
 

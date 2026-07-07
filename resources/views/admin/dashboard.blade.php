@@ -19,6 +19,7 @@
 
 <p>Benvenuto, {{ auth()->user()->name }}.</p>
 <a href="{{ route('admin.posts.index') }}" class="btn btn-primary">Vai ai lavori</a>
+<a href="{{ route('admin.settings.edit') }}" class="btn btn-secondary">Impostazioni sito</a>
 
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
