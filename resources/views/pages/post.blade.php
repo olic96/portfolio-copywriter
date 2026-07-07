@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body class="p-4">
+    @include('partials.navbar')
     <div class="container">
         <span class="badge bg-secondary">{{ $post->genere }}</span>
         <h1>{{ $post->title }}</h1>
