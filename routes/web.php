@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\SettingController;
+use  App\Http\Controllers\Admin\MessageController;
 
 
 /*
@@ -26,6 +27,8 @@ Route::get('/bio', [BioController::class, 'index'])->name('bio');
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
 Route::get('/portfolio/{id}', [PortfolioController::class, 'show'])->name('portfolio.show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 
 // ADMIN ROUTES
 Route::get('/admin/login', [DashboardController::class, 'showLoginForm'])->name('admin.login');
@@ -42,4 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/posts/{id}/edit', [PostController::class, 'edit'])->name('admin.posts.edit');
     Route::post('/admin/posts/{id}/edit', [PostController::class, 'update'])->name('admin.posts.update');
     Route::delete('/admin/posts/{id}', [PostController::class, 'destroy'])->name('admin.posts.destroy');
+    Route::get('/admin/messages', [MessageController::class, 'index'])->name('admin.messages.index');
+    Route::get('/admin/messages/{id}', [MessageController::class, 'show'])->name('admin.messages.show');
+    Route::post('/admin/messages/{id}/read', [MessageController::class, 'markAsRead'])->name('admin.messages.read');
+    Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('admin.messages.destroy');
 });
