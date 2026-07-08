@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Models\Post;
+use App\Models\Message;
 
 class DashboardController extends Controller
 {
@@ -34,7 +36,18 @@ class DashboardController extends Controller
 
     public function showDashboard()
     {
-        return view('admin.dashboard');
+        $totalPosts = Post::count();
+        $totalPubblicPost = Post::where('published', true)->count();
+        $totalNoPubblicPost = Post::where('published', false)->count();
+        $totalMessages = Message::count();
+        $totalMessagesNoRead = Message::where('read', false)->count();
+        $latestMesagges = Message::latest()->take(5)->get();
+        $latestPosts = Post::latest()->take(5)->get();
+
+        return view('admin.dashboard', compact(
+            'totalPosts', 'totalPubblicPost', 'totalNoPubblicPost',
+            'totalMessages', 'totalMessagesNoRead', 'latestMesagges', 'latestPosts'
+        ));
     }
 
     public function logout(Request $request)
